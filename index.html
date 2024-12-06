@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AREDL Viewer</title>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <h1>AREDL Viewer</h1>
+    <div id="maincont">
+      <div class="tab">
+        <button id="levelstab" class="tabbutton" onclick="openTab('levels')">Levels</button>
+        <button id="userstab" class="tabbutton" onclick="openTab('users')">Users</button>
+        <button id="recordstab" class="tabbutton" onclick="openTab('records')">Records</button>
+      </div>
+
+      <div id="levelscont" class="tabcont">
+        <p>Each level's position in the list is based on their difficulty, with the hardest level at the lowest position. Levels also feature enjoyment and points, which are given anonymously by users, and can have videos tied to the level.</p>
+        <div class="actionbuttons">
+          <button onclick="openMenu('addlevel')">Add Level</button>
+          <button onclick="openMenu('editlevel')">Edit Level</button>
+          <button onclick="openMenu('deletelevel')">Delete Level</button>
+        </div>
+      </div>
+
+      <div id="userscont" class="tabcont">
+        <div class="actionbuttons">
+          <p>Each user has a unique ID but can have any username.</p>
+          <button onclick="openMenu('adduser')">Add User</button>
+          <button onclick="openMenu('edituser')">Edit User</button>
+          <button onclick="openMenu('deleteuser')">Delete User</button>
+        </div>
+      </div>
+
+      <div id="recordscont" class="tabcont">
+        <div class="actionbuttons">
+          <p>Records consist of a video of a level's gameplay along with the user playing the level.</p>
+          <button onclick="openMenu('addrecord')">Add Record</button>
+          <button onclick="openMenu('editrecord')">Edit Record</button>
+          <button onclick="openMenu('deleterecord')">Delete Record</button>
+        </div>
+      </div>
+    </div>
+    <div id="backdrop" onclick="event.currentTarget.style.display='none'">
+      <div id="addlevel">
+        <h2>Add Level</h2>
+        <span><pre>Level ID: </pre><input oninput="checkInput('addlevel')"></span>
+        <span><pre>AREDL Position: </pre><input oninput="checkInput('addlevel')"></span>
+        <span><pre>Level Name: </pre><input oninput="checkInput('addlevel')"></span>
+        <span><pre>Publisher: </pre><select class="userdrop" onchange="checkInput('addlevel')"><option value=""></option></select></span>
+        <span><pre>Verification: </pre><select class="recorddrop" onchange="checkInput('addlevel')"><option value=""></option></select></span>
+        <span><pre>Creators: </pre><select class="userdrop multi" onchange="checkInput('addlevel')"><option value=""></option></select></span>
+        <span><pre>Records: </pre><select class="recorddrop multi" onchange="checkInput('addlevel')"><option value=""></option></select></span>
+        <span><pre>Points: </pre><input oninput="checkInput('addlevel')" placeholder="optional"></span>
+        <span><pre>Enjoyment: </pre><input oninput="checkInput('addlevel')" placeholder="optional"></span>
+        <button disabled onclick="addLevel()">Create</button>
+      </div>
+      <div id="editlevel">
+        <h2>Edit Level</h2>
+        <span><pre>Level ID to edit: </pre><input oninput="checkInput('editlevel')"></span>
+        <hr>
+        <span><pre>AREDL Position: </pre><input oninput="checkInput('editlevel')"></span>
+        <span><pre>Level Name: </pre><input oninput="checkInput('editlevel')"></span>
+        <span><pre>Publisher: </pre><select class="userdrop" onchange="checkInput('addlevel')"><option value=""></option></select></span>
+        <span><pre>Verification: </pre><select class="recorddrop" onchange="checkInput('addlevel')"><option value=""></option></select></span>
+        <span><pre>Creators: </pre><select class="userdrop multi" onchange="checkInput('addlevel')"><option value=""></option></select></span>
+        <span><pre>Records: </pre><select class="recorddrop multi" onchange="checkInput('addlevel')"><option value=""></option></select></span>
+        <span><pre>Points: </pre><input oninput="checkInput('editlevel')" placeholder="optional"></span>
+        <span><pre>Enjoyment: </pre><input oninput="checkInput('editlevel')" placeholder="optional"></span>
+        <button disabled onclick="editLevel()">Update</button>
+      </div>
+      <div id="deletelevel">
+        <h2>Delete Level</h2>
+        <pre></pre>
+        <span><pre>Enter Level ID: </pre><input oninput="checkInput('deletelevel')"></span>
+        <button disabled onclick="deleteLevel()">Delete</button>
+      </div>
+      <div id="adduser">
+        <h2>Add User</h2>
+        <span><pre>User ID: </pre><input oninput="checkInput('adduser')"></span>
+        <span><pre>Username: </pre><input oninput="checkInput('adduser')"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <button disabled onclick="addUser()">Create</button>
+      </div>
+      <div id="edituser">
+        <h2>Edit User</h2>
+        <span><pre>User ID to edit: </pre><input oninput="checkInput('edituser')"><hr></span>
+        <span><pre>Username: </pre><input oninput="checkInput('edituser')"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <button disabled onclick="editUser()">Update</button>
+      </div>
+      <div id="deleteuser">
+        <h2>Delete User</h2>
+        <pre></pre>
+        <span><pre>Enter User ID: </pre><input oninput="checkInput('deleteuser')"></span>
+        <button disabled onclick="deleteUser()">Delete</button>
+      </div>
+      <div id="addrecord">
+        <h2>Add Record</h2>
+        <span><pre>Record ID: </pre><input oninput="checkInput('addrecord')"></span>
+        <span><pre>Video URL: </pre><input oninput="checkInput('addrecord')"></span>
+        <span><pre>User ID: </pre><input oninput="checkInput('addrecord')"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <button disabled onclick="addRecord()">Create</button>
+      </div>
+      <div id="editrecord">
+        <h2>Edit Record</h2>
+        <span><pre>Record ID to edit: </pre><input oninput="checkInput('editrecord')"><hr></span>
+        <span><pre>Video URL: </pre><input oninput="checkInput('editrecord')"></span>
+        <span><pre>User ID: </pre><input oninput="checkInput('editrecord')"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <button disabled onclick="editRecord()">Update</button>
+      </div>
+      <div id="deleterecord">
+        <h2>Delete Record</h2>
+        <pre></pre>
+        <span><pre>Enter Record ID: </pre><input oninput="checkInput('deleterecord')"></span>
+        <button disabled onclick="deleteRecord()">Delete</button>
+      </div>
+    </div>
+  </body>
+</html>

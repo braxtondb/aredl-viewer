@@ -1,0 +1,147 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: lightblue;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 66pt;
+}
+
+#maincont {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.tab button {
+    width: 33%;
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 1vw;
+}
+.tab button:hover {
+    background-color: #ddd;
+}
+.tab button.active {
+    background-color: #ccc;
+}
+
+.tabcont {
+    display: none;
+    padding: 6px 10%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.actionbuttons {
+    width: 75%;
+    margin: auto;
+    position: relative;
+}
+
+.actionbuttons button {
+    background-color: rgb(48, 255, 48);
+    font-size: 1.2vw;
+    padding: 12px 0px 12px 0px;
+    border-radius: 15px;
+    border: none;
+    margin: 0.5%;
+    box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    width: 31%;
+    text-wrap: nowrap;
+}
+.actionbuttons button:hover {
+    background-color: rgb(132, 255, 121);
+    color: #333;
+}
+.actionbuttons button:active {
+    background-color: rgb(17, 197, 50);
+    color: black;
+}
+
+#backdrop {
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    bottom: 0%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#backdrop div {
+    background-color: white;
+    position: absolute;
+    left: 29%;
+    right: 29%;
+    top: 20%;
+    bottom: 20%;
+    border-radius: 40px;
+    padding: 10px 40px;
+    line-height: 0;
+    font-size: 14pt;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#backdrop div span {
+    flex-grow: 1;
+}
+#backdrop div pre {
+    display: inline-block;
+}
+#backdrop div input {
+    display: inline-block;
+    font-size: 14pt;
+}
+#backdrop div button {
+    height: 7%;
+    width: 25%;
+    margin: 0 auto;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(48, 255, 48);
+    font-size: 14pt;
+}
+#backdrop div button:disabled {
+    background-color: #999;
+    color: #333;
+}
+#backdrop div button:hover:enabled {
+    background-color: rgb(132, 255, 121);
+    color: #333;
+}
+#backdrop div button:active:enabled {
+    background-color: rgb(17, 197, 50);
+    color: black;
+}
+
+h2 {
+    text-align: center;
+    font-size: 25pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+hr {
+    border: none;
+    width: 96%;               
+    background-color: black;
+    height: 1px;
+}
