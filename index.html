@@ -11,9 +11,9 @@
     <h1>AREDL Viewer</h1>
     <div id="maincont">
       <div class="tab">
-        <button id="levelstab" class="tabbutton" onclick="openTab('levels')">Levels</button>
-        <button id="userstab" class="tabbutton" onclick="openTab('users')">Users</button>
-        <button id="recordstab" class="tabbutton" onclick="openTab('records')">Records</button>
+        <button id="levelstab" class="tabbutton" onclick="openTab('levels'); sortLevels()">Levels</button>
+        <button id="userstab" class="tabbutton" onclick="openTab('users'); sortUsers()">Users</button>
+        <button id="recordstab" class="tabbutton" onclick="openTab('records'); sortRecords()">Records</button>
       </div>
 
       <div id="levelscont" class="tabcont">
@@ -43,6 +43,10 @@
         </div>
       </div>
     </div>
+    <div id="datalist">
+      <table></table>
+    </div>
+    <button id="sort" onclick="openMenu('sortmenu')">Sort...</button>
     <div id="backdrop" onclick="event.currentTarget.style.display='none'">
       <div id="addlevel">
         <h2>Add Level</h2>
@@ -132,6 +136,39 @@
         <pre></pre>
         <span><pre>Enter Record ID: </pre><input oninput="checkInput('deleterecord')"></span>
         <button disabled onclick="deleteRecord()">Delete</button>
+      </div>
+      <div id="sortlevels">
+        <h2>Sort settings</h2>
+        <pre></pre>
+        <span><pre>Sort by: </pre><select id="lvlsort"><option value="position">Level Position</option><option value="name">Level Name</option><option value="verifier">Verifier</option><option value="id">Level ID</option><option value="points">List Points</option><option value="enjoyment">Rating</option><option value="publisher">Publisher</option><option value="creator">First Listed Creator</option><option value="records">First Listed Record</option></select></span>
+        <span><pre>Descending </pre><label class="switch"><input type="checkbox" id="lvlsortsw" checked><span class="slider round"></span></label><pre> Ascending</pre></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <button onclick="sortLevels()">Sort</button>
+      </div>
+      <div id="sortusers">
+        <h2>Sort settings</h2>
+        <pre></pre>
+        <span><pre>Sort by: </pre><select id="usrsort"><option value="id">User ID</option><option value="username">Username</option></select></span>
+        <span><pre>Descending </pre><label class="switch"><input type="checkbox" id="usrsortsw" checked><span class="slider round"></span></label><pre> Ascending</pre></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <button onclick="sortUsers()">Sort</button>
+      </div>
+      <div id="sortrecords">
+        <h2>Sort settings</h2>
+        <pre></pre>
+        <span><pre>Sort by: </pre><select id="recsort"><option value="id">User ID</option><option value="url">URL</option><option value="username">Uploader</option></select></span>
+        <span><pre>Descending </pre><label class="switch"><input type="checkbox" id="recsortsw" checked><span class="slider round"></span></label><pre> Ascending</pre></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <button onclick="sortRecords()">Sort</button>
       </div>
     </div>
   </body>

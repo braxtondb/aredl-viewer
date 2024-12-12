@@ -17,6 +17,30 @@ h1 {
     right: 25%;
 }
 
+#datalist {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 50%;
+    bottom: 5%;
+    background-color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #ddd;
+}
+
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
@@ -59,7 +83,7 @@ h1 {
     background-color: rgb(48, 255, 48);
     font-size: 1.2vw;
     padding: 12px 0px 12px 0px;
-    border-radius: 15px;
+    border-radius: 7px;
     border: none;
     margin: 0.5%;
     box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.2);
@@ -73,6 +97,24 @@ h1 {
 .actionbuttons button:active {
     background-color: rgb(17, 197, 50);
     color: black;
+}
+
+#sort {
+    left: 76%;
+    right: 20%;
+    top: 50%;
+    bottom: 46.8%;
+    position: absolute;
+    border: none;
+    border-radius: 7px;
+    background-color: #e2a0ff;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.2);
+}
+#sort:hover {
+    background-color: #ebbdff;
+}
+#sort:active {
+    background-color: #985bb3;
 }
 
 #backdrop {
@@ -115,7 +157,7 @@ h1 {
     width: 25%;
     margin: 0 auto;
     border: none;
-    border-radius: 8px;
+    border-radius: 7px;
     background-color: rgb(48, 255, 48);
     font-size: 14pt;
 }
@@ -141,7 +183,69 @@ h2 {
 
 hr {
     border: none;
-    width: 96%;               
+    width: 96%;
     background-color: black;
     height: 1px;
+}
+
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  vertical-align: middle;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #888;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+input:checked + .slider {
+  background-color: #888;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #888;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
